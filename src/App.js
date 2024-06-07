@@ -3,6 +3,8 @@ import Loader from "./Components/Loader";
 import Main from "./Components/Main";
 import SignUp from "./Components/SignUp";
 import Login from "./Components/Login";
+import { Routes, Route } from "react-router-dom";
+
 function changeZIndex(boxNumber) {
   var box1 = document.getElementById("signContainer");
   var box2 = document.getElementById("loginContainer");
@@ -33,12 +35,15 @@ function changeZIndex(boxNumber) {
 }
 function App() {
   return (
-    <div className="App">
-      <Loader />
-      <SignUp pare={changeZIndex} />
+    <Routes>
+      <Route
+        path="/"
+        element={((<Loader />), (<Main pare={changeZIndex} />))}
+      />
+      <Route path="/user/create" element={<SignUp pare={changeZIndex} />} />
+      <Route />
       <Login pare={changeZIndex} />
-      <Main pare={changeZIndex} />
-    </div>
+    </Routes>
   );
 }
 
